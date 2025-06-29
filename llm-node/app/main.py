@@ -26,18 +26,18 @@ class InferenceRequest(BaseModel):
 @app.post("/infer")
 async def infer(request: InferenceRequest):
     try:
-        plaintext = decrypt_payload(
+        plaintext, aes_key, nonce_bytes = decrypt_payload(
             encrypted_key=request.encrypted_key,
             encrypted_payload=request.encrypted_payload,
-            nonce=request.nonce
+            nonce=request.nonce,
         )
 
         response_text = run_model(plaintext)
 
-        encrypted_response = encrypt_response(response_text)
+        encrypted_payload = encrypt_response(response_text, aes_key, nonce_bytes)
 
         return {
-            "encrypted_payload": encrypted_response["payload"],
+            "encrypted_payload": encrypted_payload,
             "proof": "dummy_hash_or_sig",
             "storage_ref": None
         }
