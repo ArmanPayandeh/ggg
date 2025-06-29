@@ -12,7 +12,9 @@ export default function ChatBox({ walletAddress }: { walletAddress: string }) {
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
 
-  const receiverPublicKey = 'mqpO6mNWF2n1p11nphwCr4IyVEJVvrakRiGqQ6C88Eg='
+  // Public key that matches the server's private key
+  const receiverPublicKey =
+    'q1VQYOOSsLaJeF2Ln4t0NBwbdPMlWn58teEWtNgGRy0='
 
   const sendMessage = async () => {
     if (!input.trim()) return
