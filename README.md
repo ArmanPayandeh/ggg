@@ -1,22 +1,30 @@
-decentramind-mvp/
-├── llm-node/                  # Secure LLM inference node (FastAPI + Docker)
-│   ├── app/
-│   │   ├── main.py            # Entry point (FastAPI server)
-│   │   ├── model_runner.py    # Code to run model inference
-│   │   ├── crypto_utils.py    # RSA / AES encryption/decryption
-│   │   └── config.py          # Config vars & model settings
-│   ├── Dockerfile             # Docker build for LLM node
-│   ├── requirements.txt       # Python deps (FastAPI, cryptography, etc.)
-│   └── README.md
+# DecentraMind MVP
 
-├── client-dapp/               # Frontend app (Next.js or React + Tailwind)
-│   ├── pages/                 # Main dApp UI
-│   ├── components/            # ChatInput, WalletConnect, etc.
-│   ├── lib/crypto.ts          # AES + Curve25519 utils for encryption
-│   ├── public/
-│   ├── tailwind.config.js
+این مخزن نمونه‌ای برای اجرای یک نود استنتاج مدل زبانی به همراه رابط کاربری غیرمتمرکز است. پروژه شامل دو ماژول اصلی می‌باشد:
+
+- **llm-node**: پیاده‌سازی نود استنتاج با استفاده از FastAPI و کتابخانه‌های رمزنگاری. این نود پیام‌های رمزنگاری شده را دریافت و پاسخ را به صورت رمز شده برمی‌گرداند.
+- **client-dapp**: برنامه‌ی وب (Next.js) که کاربر از طریق آن پیام را رمز کرده و با نود ارتباط برقرار می‌کند.
+
+## ساختار کلی
+
+```text
+decentramind-mvp/
+├── llm-node/          # کد سرور FastAPI
+│   ├── app/
+│   │   ├── main.py
+│   │   ├── model_runner.py
+│   │   ├── crypto_utils.py
+│   │   └── keygen.py
+│   ├── requirements.txt
+│   └── README.md
+├── client-dapp/       # رابط کاربری Next.js
+│   ├── src/
+│   │   ├── app/
+│   │   ├── components/
+│   │   └── lib/
 │   ├── package.json
 │   └── README.md
+└── README.md          # همین فایل
+```
 
-├── .gitignore
-└── README.md                  # Main README with instructions
+برای راه‌اندازی هر بخش به README مربوطه مراجعه کنید.

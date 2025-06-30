@@ -1,6 +1,23 @@
-uvicorn app.main:app --host 0.0.0.0 --port 9000
+# llm-node
 
-PRIVATE_KEY_BASE64: IF+alcQWuNRx5ZIEUspk0C4rDMuMJ4xxfRkS6xH56BI=
-PUBLIC_KEY_BASE64: q1VQYOOSsLaJeF2Ln4t0NBwbdPMlWn58teEWtNgGRy0=
+این پوشه شامل سرور FastAPI است که به عنوان نود استنتاج مدل زبانی عمل می‌کند. ارتباط بین کلاینت و سرور به صورت رمزنگاری شده بوده و پاسخ نیز به شکل رمز شده بازگردانده می‌شود.
 
+## راه‌اندازی سریع
+
+1. ایجاد و فعال‌سازی محیط مجازی:
+
+```bash
+python -m venv venv
 source venv/bin/activate
+pip install -r requirements.txt
+```
+
+2. اجرای سرور:
+
+```bash
+uvicorn app.main:app --host 0.0.0.0 --port 9000
+```
+
+3. در صورت نیاز به ایجاد کلید جدید می‌توانید اسکریپت `app/keygen.py` را اجرا کنید.
+
+کلاینت درخواست‌ها را به آدرس `/infer` ارسال می‌کند و بدنه‌ی درخواست شامل داده‌های رمز شده است.
